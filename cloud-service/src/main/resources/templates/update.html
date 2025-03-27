@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Cloud</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Edit Cloud</h2>
+    <form th:action="@{/admin/clouds/update/{id}(id=${cloud.id})}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" th:value="${cloud.name}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="code">Code</label>
+            <input type="text" class="form-control" id="code" name="code" th:value="${cloud.code}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" required>[[${cloud.description}]]</textarea>
+        </div>
+
+        <h4>Uploaded Files</h4>
+        <ul>
+            <li th:each="file : ${cloudFiles}">
+                <span th:text="${file.name}"></span>
+                <a th:href="@{/storage/download/{id}(id=${file.id})}" class="btn btn-sm btn-primary">Download</a>
+                <button type="button" class="btn btn-sm btn-danger" th:onclick="|deleteFile(${file.id})|">Delete</button>
+
+            </li>
+        </ul>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="/admin/clouds" class="btn btn-secondary">Cancel</a>
+    </form>
+
+    <h4>Upload New Files</h4>
+    <form id="uploadForm" th:action="@{/storage/{id}/add(id=${cloud.id})}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="files">Upload Files</label>
+            <input type="file" class="form-control-file" id="files" name="files" multiple>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (response.ok) {
+                    location.reload(); // Reload the page to reflect the changes
+                } else {
+                    response.text().then(text => alert(`Failed to upload the file: ${text}`));
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    function deleteFile(fileId) {
+        const fileIdNumber = Number(fileId);
+        console.log("Deleting file with ID:", fileIdNumber);
+        if (confirm('Are you sure?')) {
+            fetch(`/storage/delete/${fileIdNumber}`, {
+                method: 'POST'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        location.reload(); // Reload the page to reflect the changes
+                    } else {
+                        response.text().then(text => alert(`Failed to delete the file: ${text}`));
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    }
+</script>
+</body>
+</html>

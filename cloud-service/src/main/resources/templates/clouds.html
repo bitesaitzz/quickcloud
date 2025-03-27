@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Clouds</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    .form-container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-4">
+  <h2>All Clouds</h2>
+
+
+
+  <!-- Table to display all clouds -->
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>Created At</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through all clouds -->
+    <tr th:each="cloud : ${clouds}">
+      <td th:text="${cloud.id}"></td>
+      <td th:text="${cloud.name}"></td>
+      <td th:text="${cloud.code}"></td>
+      <td th:text="${cloud.description}"></td>
+      <td th:text="${#temporals.format(cloud.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+      <td>
+        <a th:href="@{/code/{code}(code=${cloud.code})}" class="btn btn-primary">Access</a>
+        <a th:href="@{/admin/clouds/update/{id}(id=${cloud.id})}" class="btn btn-warning">Edit</a>
+        <form th:action="@{/admin/clouds/delete/{id}(id=${cloud.id})}" method="post" style="display:inline;">
+          <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

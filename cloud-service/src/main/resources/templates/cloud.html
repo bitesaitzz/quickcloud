@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Details</title>
+    <style>
+        /* Общий стиль страницы */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2c2f38; /* Темный фон страницы */
+            color: white;
+        }
+        header {
+            background-color: #333;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Выравнивание элементов по левому краю */
+        }
+
+        /* Хедер */
+        header a {
+            color: #007BFF;
+            text-decoration: none;
+            margin: 0 25px; /* Увеличили отступы между ссылками */
+            font-size: 24px; /* Увеличили шрифт ссылок */
+            transition: color 0.3s ease; /* Плавный переход для цвета */
+        }
+
+        header a {
+            color: #007BFF;
+            text-decoration: none;
+            margin: 0 25px; /* Увеличили отступы между ссылками */
+            font-size: 24px; /* Увеличили шрифт ссылок */
+            transition: color 0.3s ease; /* Плавный переход для цвета */
+        }
+
+        header a:hover {
+
+            color: #0056b3; /* Более темный синий при наведении */
+        }
+
+        header a.active {
+            color: #007BFF; /* Синий цвет для активной ссылки */
+            font-weight: bold; /* Выделяем жирным */
+            text-decoration: underline;
+        }
+
+        /* Контейнер для содержимого страницы */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        h1, h2 {
+            font-size: 32px;
+            color: #ffffff;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .file-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #444;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-item p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .file-item a {
+            margin-top: 10px;
+            display: inline-block;
+        }
+        textarea.form-control {
+            width: 100%;
+            height: 250px; /* Static height */
+            background-color: #444; /* Match the background color of other elements */
+            color: white; /* Text color */
+            border: 1px solid #555; /* Border color */
+            border-radius: 8px; /* Rounded corners */
+            padding: 10px; /* Padding inside the textarea */
+            box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+            margin: 20px 0; /* Margin to separate from other elements */
+            display: block; /* Ensure it behaves like a block element */
+            text-align: left; /* Text alignment */
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header с основными разделами -->
+<header>
+    <a href="/" id="mainLink">Main</a>
+    <a href="/create" id="createLink">Create</a>
+    <a href="/info" id="infoLink">Info</a>
+</header>
+
+<!-- Контейнер с информацией о облаке -->
+<div class="container">
+    <h1>Cloud Details</h1>
+    <div>
+        <p><strong>Name:</strong> <span th:text="${cloud.name}"></span></p>
+        <p><strong>Code:</strong> <span th:text="${cloud.code}"></span></p>
+        <p><strong>Created At:</strong> <span th:text="${#temporals.format(cloud.createdAt, 'yyyy-MM-dd HH:mm')}"></span></p>
+        <p><strong>Description:</strong></p> <span> <textarea class="form-control" name="description" th:text="${cloud.description}" readonly></textarea> </span> </p>
+<!--        <p><strong>Description:</strong> <pre><span th:text="${cloud.description}"></span></pre></p>-->
+    </div>
+
+    <h2>Files</h2>
+    <div>
+        <ul>
+            <li th:each="file : ${cloudFiles}" class="file-item">
+                <p><strong>File Name:</strong> <span th:text="${file.name}"></span></p>
+                <p><strong>Content Type:</strong> <span th:text="${file.contentType}"></span></p>
+                <p><strong>Size:</strong> <span th:text="${file.size}"></span> bytes</p>
+                <a th:href="@{/storage/download/{fileId}(fileId=${file.id})}" class="btn">Download</a>
+            </li>
+        </ul>
+    </div>
+
+    <a href="/" class="btn">Back to Clouds List</a>
+</div>
+
+<!--<script>-->
+<!--    // JavaScript для выделения активной ссылки-->
+<!--    document.addEventListener("DOMContentLoaded", function() {-->
+<!--        // Получаем текущий URL страницы-->
+<!--        const currentPath = window.location.pathname;-->
+
+<!--        // Убираем класс active со всех ссылок-->
+<!--        const links = document.querySelectorAll('header a');-->
+<!--        links.forEach(link => {-->
+<!--            link.classList.remove('active');-->
+<!--        });-->
+
+<!--        // Добавляем класс active для ссылки, которая соответствует текущему пути-->
+<!--        if (currentPath.includes("create")) {-->
+<!--            document.getElementById("createLink").classList.add('active');-->
+<!--        } else if (currentPath.includes("info")) {-->
+<!--            document.getElementById("infoLink").classList.add('active');-->
+<!--        } else {-->
+<!--            document.getElementById("mainLink").classList.add('active');-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+</body>
+</html>

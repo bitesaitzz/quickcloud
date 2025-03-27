@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+    gateway:
+      mvc:
+        routes:
+          - id: cloud-service
+            uri: ${CLOUD_SERVICE_URI:http://localhost:8081}
+            predicates:
+              - Path=/**,/admin/**,/storage/**

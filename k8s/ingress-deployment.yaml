@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/"},"name":"gateway-ingress","namespace":"default"},"spec":{"ingressClassName":"nginx","rules":[{"host":"quickcloud.xyz","http":{"paths":[{"backend":{"service":{"name":"gateway-service","port":{"number":80}}},"path":"/","pathType":"Prefix"}]}}],"tls":[{"hosts":["quickcloud.xyz"],"secretName":"my-tls-secret"}]}}
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  creationTimestamp: "2025-03-18T09:30:44Z"
+  generation: 2
+  name: gateway-ingress
+  namespace: default
+  resourceVersion: "7317"
+  uid: 3ea818e7-a419-47d6-83d9-44206e8cedab
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: quickcloud.xyz
+      http:
+        paths:
+          - backend:
+              service:
+                name: gateway-service
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - quickcloud.xyz
+      secretName: my-tls-secret
+status:
+  loadBalancer:
+    ingress:
+      - ip: 157.230.76.123
+      - ip: 2a03:b0c0:3:f0::a307:5000
