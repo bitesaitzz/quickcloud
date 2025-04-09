@@ -22,8 +22,15 @@ spec:
                     values:
                       - pool-quickcloud-6uh67  #pool-quickcloud-6uh67
       containers:
+#       spring.datasource.password=sAvtad-sidgew-9morjo
+# spring.datasource.username=bitesaitzz
+# spring.datasource.url=jdbc:postgresql://quickcloud-db.postgres.database.azure.com:5432/postgres
+# spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+# spring.jpa.hibernate.ddl-auto=none
+# spring.jpa.show-sql=true
+# spring.mvc.hiddenmethod.filter.enabled=true
         - name: cloud-service
-          image: aliaksandrshydlouski/cloud-service:2.11
+          image: aliaksandrshydlouski/cloud-service:2.7
           env:
             - name: SPRING_DATA_REDIS_HOST
               value: "redis"
