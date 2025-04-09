@@ -4,111 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Not Found</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background-color: #2c2f38; /* Темный фон */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: white; /* Белый текст */
-            padding-top: 80px; /* Оставляем пространство для хедера */
-        }
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            height: 100vh;-->
+<!--            background-color: #2c2f38; /* Темный фон */-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            flex-direction: column;-->
+<!--            color: white; /* Белый текст */-->
+<!--            padding-top: 80px; /* Оставляем пространство для хедера */-->
+<!--        }-->
 
-        /* Хедер */
-        header {
-            background-color: #333;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start; /* Выравнивание элементов по левому краю */
-            width: 100%;
-            position: fixed; /* Закрепляем хедер в верхней части */
-            top: 0;
-            left: 0;
-            z-index: 1000; /* Устанавливаем приоритет отображения */
-        }
+<!--        /* Хедер */-->
+<!--        header {-->
+<!--            background-color: #333;-->
+<!--            padding: 20px;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: flex-start; /* Выравнивание элементов по левому краю */-->
+<!--            width: 100%;-->
+<!--            position: fixed; /* Закрепляем хедер в верхней части */-->
+<!--            top: 0;-->
+<!--            left: 0;-->
+<!--            z-index: 1000; /* Устанавливаем приоритет отображения */-->
+<!--        }-->
 
-        header a {
-            color: #007BFF;
-            text-decoration: none;
-            margin: 0 25px; /* Увеличили отступы между ссылками */
-            font-size: 24px; /* Увеличили шрифт ссылок */
-            transition: color 0.3s ease; /* Плавный переход для цвета */
-        }
+<!--        header a {-->
+<!--            color: #007BFF;-->
+<!--            text-decoration: none;-->
+<!--            margin: 0 25px; /* Увеличили отступы между ссылками */-->
+<!--            font-size: 24px; /* Увеличили шрифт ссылок */-->
+<!--            transition: color 0.3s ease; /* Плавный переход для цвета */-->
+<!--        }-->
 
-        header a:hover {
-            color: #0056b3; /* Более темный синий при наведении */
-        }
+<!--        header a:hover {-->
+<!--            color: #0056b3; /* Более темный синий при наведении */-->
+<!--        }-->
 
-        header a.active {
-            color: #007BFF; /* Синий цвет для активной ссылки */
-            font-weight: bold; /* Выделяем жирным */
-            text-decoration: underline;
-        }
+<!--        header a.active {-->
+<!--            color: #007BFF; /* Синий цвет для активной ссылки */-->
+<!--            font-weight: bold; /* Выделяем жирным */-->
+<!--            text-decoration: underline;-->
+<!--        }-->
 
-        .container {
-            text-align: center;
-            padding: 30px;
-            background-color: #333; /* Темная форма */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            margin-top: 70px; /* Оставляем пространство для хедера */
-            width: 60%;
-        }
+<!--        .container {-->
+<!--            text-align: center;-->
+<!--            padding: 30px;-->
+<!--            background-color: #333; /* Темная форма */-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);-->
+<!--            margin-top: 70px; /* Оставляем пространство для хедера */-->
+<!--            width: 60%;-->
+<!--        }-->
 
-        h1 {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: #ffffff; /* Белый цвет заголовка */
-        }
+<!--        h1 {-->
+<!--            font-size: 40px;-->
+<!--            margin-bottom: 20px;-->
+<!--            color: #ffffff; /* Белый цвет заголовка */-->
+<!--        }-->
 
-        .alert {
-            font-size: 18px;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #ff4444; /* Красный фон для ошибки */
-            color: white;
-            margin-bottom: 20px;
-        }
+<!--        .alert {-->
+<!--            font-size: 18px;-->
+<!--            padding: 15px;-->
+<!--            border-radius: 8px;-->
+<!--            background-color: #ff4444; /* Красный фон для ошибки */-->
+<!--            color: white;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
 
-        img {
-            width: 40%; /* Увеличиваем размер гифки */
-            height: auto;
-            border-radius: 10px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto; /* Центрируем гифку */
-            transition: transform 0.3s ease;
-        }
+<!--        img {-->
+<!--            width: 40%; /* Увеличиваем размер гифки */-->
+<!--            height: auto;-->
+<!--            border-radius: 10px;-->
+<!--            margin-top: 20px;-->
+<!--            margin-bottom: 20px;-->
+<!--            display: block;-->
+<!--            margin-left: auto;-->
+<!--            margin-right: auto; /* Центрируем гифку */-->
+<!--            transition: transform 0.3s ease;-->
+<!--        }-->
 
-        img:hover {
-            transform: scale(2); /* Анимация при наведении */
-        }
+<!--        img:hover {-->
+<!--            transform: scale(2); /* Анимация при наведении */-->
+<!--        }-->
 
-        .btn {
-            padding: 15px 40px;
-            font-size: 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
+<!--        .btn {-->
+<!--            padding: 15px 40px;-->
+<!--            font-size: 20px;-->
+<!--            background-color: #007BFF;-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            border-radius: 8px;-->
+<!--            cursor: pointer;-->
+<!--            transition: background-color 0.3s ease;-->
+<!--            text-decoration: none;-->
+<!--            display: inline-block;-->
+<!--        }-->
 
-        .btn:hover {
-            background-color: #0056b3; /* Темный цвет кнопки при наведении */
-        }
-    </style>
+<!--        .btn:hover {-->
+<!--            background-color: #0056b3; /* Темный цвет кнопки при наведении */-->
+<!--        }-->
+<!--    </style>-->
 </head>
 <body>
 
@@ -122,8 +123,8 @@
 <!-- Контейнер с сообщением об ошибке -->
 <div class="container">
     <h1>Something wents wrong</h1>
-    <div class="alert" th:text="${error}"></div>
-    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGwzamd2emN1ZzZlYTNmbTNvdXl1ZmdmMzJ6cW9qZnJ3ZHlzaWJlZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5Zesu5VPNGJlm/giphy.gif" alt="Cloud Not Found" />
+    <div class="alert error" th:text="${error}"></div>
+    <img class="img2" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGwzamd2emN1ZzZlYTNmbTNvdXl1ZmdmMzJ6cW9qZnJ3ZHlzaWJlZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5Zesu5VPNGJlm/giphy.gif" alt="Cloud Not Found" />
     <a href="/" class="btn">Back to main</a>
 </div>
 

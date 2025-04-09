@@ -20,7 +20,7 @@ spec:
                   - key: "kubernetes.io/hostname"
                     operator: In
                     values:
-                      - pool-quickcloud-6uh67
+                      - pool-quickcloud-6uh67  #pool-quickcloud-6uh67
       containers:
         - name: cloud-service
           image: aliaksandrshydlouski/cloud-service:2.2

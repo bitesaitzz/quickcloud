@@ -20,7 +20,8 @@ spec:
                   - key: "kubernetes.io/hostname"
                     operator: In
                     values:
-                      - pool-jenkins-6fqrm
+                      - pool-quickcloud-66tb4
+
       containers:
         - name: jenkins
           image: jenkins/jenkins:lts
