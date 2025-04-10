@@ -10,7 +10,7 @@ body {
     height: 100vh;
     flex-direction: column;
     overflow: hidden; /* Раскомментировали эту строку */
-    overflow-x: hidden; /* Дублируем для надежности */
+    /* Дублируем для надежности */
     width: 100%; /* Устанавливаем ширину 100% */
     box-sizing: border-box; /* Учитываем padding в общей ширине */
 }
@@ -53,7 +53,6 @@ header a.active {
     text-align: center;
     min-width: 600px;
     position: relative;
-    top: 0px;
     max-width: 100%;
     box-sizing: border-box;
 }
