@@ -9,9 +9,11 @@ body {
     align-items: center;
     height: 100vh;
     flex-direction: column;
-    overflow: hidden;
+    overflow: hidden; /* Раскомментировали эту строку */
+    overflow-x: hidden; /* Дублируем для надежности */
+    width: 100%; /* Устанавливаем ширину 100% */
+    box-sizing: border-box; /* Учитываем padding в общей ширине */
 }
-
 header {
     background-color: #333;
     padding: 20px;
@@ -51,7 +53,7 @@ header a.active {
     text-align: center;
     min-width: 600px;
     position: relative;
-    top: 60px;
+    top: 0px;
     max-width: 100%;
     box-sizing: border-box;
 }
@@ -118,6 +120,9 @@ h2 {
     font-size: 18px;
     color: #ddd;
 }
+
+
+
 
 .form-control {
     background-color: #444;
@@ -186,7 +191,9 @@ h2 {
     display: inline-block;
 }
 
-
+a {
+    text-decoration: none;
+}
 
 .alert {
     font-size: 18px;
@@ -282,4 +289,138 @@ img {
     margin-left: auto;
     margin-right: auto; /* Центрируем гифку */
     transition: transform 0.3s ease;
+}
+/* Мобильные устройства (до 768px) */
+@media (max-width: 1024px) {
+    body {
+        height: auto;
+        padding: 15px;
+        overflow-x: hidden; /* Запрещаем горизонтальный скролл */
+        width: 100%;
+        position: relative;
+    }
+
+    header {
+        padding: 15px 10px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        left: 0;
+        right: 0;
+    }
+
+    header a {
+        font-size: 25px;
+        margin: 0 8px;
+        display: inline-block; /* Для лучшего отображения на маленьких экранах */
+    }
+
+    .main_container, .container {
+        width: 100% !important; /* Принудительно задаем ширину */
+        min-width: 0 !important; /* Убираем минимальную ширину */
+        /*padding: 15px;*/
+        margin-top: 20%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .input-container {
+        flex-wrap: wrap; /* Разрешаем перенос элементов */
+        gap: 5px;
+    }
+
+    .input-field {
+        width: 40px;
+        height: 60px;
+        font-size: 32px;
+    }
+
+    .search-button {
+        padding: 12px 25px;
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        height: 120px;
+    }
+
+    .btn {
+        width: 100%;
+        font-size: 25px;
+
+    }
+
+    .file-item .btn {
+        width: 30%;
+        margin-top: 10px;
+    }
+
+    img, .img2 {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .checkbox-container {
+        flex-direction: column; /* Располагаем чекбоксы вертикально */
+        gap: 10px;
+    }
+    .input-container, .button-container, .checkbox-container {
+        width: 100%;
+        box-sizing: border-box;
+
+    }
+
+
+
+    /* Специфические стили для очень маленьких экранов */
+
+}
+
+@media (max-width: 560px) {
+
+    .main_container, .container {
+        margin-top: 40%;
+    }
+
+    header a {
+        font-size: 30px; /* Уменьшаем для предотвращения переполнения */
+        margin: 0 3px;
+    }
+
+    .input-field {
+        width: 30px; /* Гарантируем, что поля ввода поместятся */
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .btn {
+        width: 40%;
+        margin-bottom: 10px;
+        font-size: 25px;
+    }
+    .file-item .btn {
+        width: 40%;
+        margin-top: 10px;
+    }
+}
+@media (max-height: 800px) {
+    .container {
+        margin-top: 200px; /* Add margin to prevent overlap */
+    }
+}
+
+
+html {
+    width: 100%;
+    overflow-x: hidden;
 }
