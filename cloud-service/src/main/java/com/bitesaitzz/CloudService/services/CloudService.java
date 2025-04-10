@@ -84,8 +84,16 @@ public class CloudService {
                 String contentType = multipartFile.getContentType();
                 long size = multipartFile.getSize();
 
+
                 Path path = uploadDir.resolve(specialFilename);
-                Files.write(path, multipartFile.getBytes());
+                try {
+                    multipartFile.transferTo(path);
+                } catch (IOException e) {
+                    Files.deleteIfExists(path);  // Clean up
+                    throw e;
+                }  // This streams directly to disk
+//                Path path = uploadDir.resolve(specialFilename);
+//                Files.write(path, multipartFile.getBytes());
 
                 CloudFile cloudFile = new CloudFile();
                 cloudFile.setName(specialFilename);
