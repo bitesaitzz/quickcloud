@@ -30,7 +30,7 @@ spec:
 # spring.jpa.show-sql=true
 # spring.mvc.hiddenmethod.filter.enabled=true
         - name: cloud-service
-          image: aliaksandrshydlouski/cloud-service:2.011
+          image: aliaksandrshydlouski/cloud-service:2.012
           env:
             - name: SPRING_DATA_REDIS_HOST
               value: "redis"
