@@ -14,7 +14,7 @@ ENV SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver \
     SPRING_RABBITMQ_PASSWORD=guest \
     SERVER_PORT=8081 \
     SPRING_APPLICATION_NAME=cloud-service \
-    QUEUE_NAME=message-queue \
+    QUEUE_NAME=message-queue
 
 ARG DB_URL
 ARG DB_USER
