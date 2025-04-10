@@ -12,6 +12,8 @@ ENV SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver \
 #    SPRING_LIQUIBASE_CHANGE_LOG=classpath:db/changelog/changelog-master.xml \
     SPRING_RABBITMQ_USERNAME=guest \
     SPRING_RABBITMQ_PASSWORD=guest \
+    SERVER_PORT=8081 \
+    SPRING_APPLICATION_NAME=cloud-service \
     QUEUE_NAME=message-queue
 
 ARG DB_URL
