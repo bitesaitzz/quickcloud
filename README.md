@@ -6,7 +6,9 @@ QuickCloud is a cloud service that allows users to upload files and information 
 
 ## Architecture
 
-The project consists of three microservices:
+The project follows a Service-Oriented Architecture (SOA), where each service is responsible for a distinct business capability. Communication between services is handled asynchronously via RabbitMQ.
+
+The system consists of the following services:
 
 - **Cloud Service**: The main service that handles data storage and access logic.
 - **Notification Service**: A service for sending access codes to users via email (with future support for Telegram notifications).
@@ -15,6 +17,7 @@ The project consists of three microservices:
 ## Technology Stack
 
 - **Backend**: Java (Spring Boot)
+- **Architecture**: SOA
 - **Database**: PostgreSQL
 - **Containerization**: Docker, Docker Compose
 - **Orchestration**: Kubernetes (deployed on DigitalOcean)
