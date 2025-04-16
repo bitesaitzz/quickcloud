@@ -2,7 +2,7 @@
 
 **quickcloud.xyz**
 
-QuickCloud is a cloud service that allows users to upload files and information to the cloud and receive a unique code for future access to this data from any device.
+QuickCloud is a web-application that allows users to upload files and information to the cloud and receive a unique code for future access to this data from any device.
 
 ## Architecture
 
