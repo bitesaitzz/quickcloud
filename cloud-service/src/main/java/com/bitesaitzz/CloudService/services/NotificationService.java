@@ -26,7 +26,8 @@ public class NotificationService {
         Message message = Message.builder()
                 .mail(user)
                 .subject("Verification code")
-                .text("Your verification code is: " + code)
+                .text("Your verification code is: " + code +
+                        "<br>Link to the cloud: <a href=\"https://quickcloud.xyz/code/" + code + "\">LINK</a>")
                 .type(type)
                 .build();
         logger.info("Sending message: " + message);

@@ -1,8 +1,11 @@
 FROM openjdk:21-jdk-slim
 WORKDIR /quickcloud
 COPY target/CloudService-0.0.1-SNAPSHOT.jar /quickcloud
+COPY src/main/resources/application-dev.properties /quickcloud/config/
 EXPOSE 8081
 ENV SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver \
+    SPRING_PROFILES_ACTIVE=dev \
+    SPRING_CONFIG_LOCATION=classpath:/,file:/quickcloud/config/ \
     SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect \
     SPRING_JPA_HIBERNATE_DDL_AUTO=none \
     SPRING_JPA_SHOW_SQL=true \

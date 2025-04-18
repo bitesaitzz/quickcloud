@@ -55,6 +55,11 @@ public class CloudController {
         return "main";
     }
 
+    @GetMapping("/info")
+    public String info() {
+        return "info";
+    }
+
     @GetMapping("/code/{code}")
     public String getCloud(@PathVariable String code, HttpServletRequest request, HttpServletResponse response, Model model) {
 
