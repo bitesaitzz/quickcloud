@@ -23,7 +23,7 @@ spec:
                       - pool-quickcloud-6uh67
       containers:
         - name: notification-service
-          image: aliaksandrshydlouski/notification-service:2.7
+          image: aliaksandrshydlouski/notification-service:2.030
           env:
             - name: SPRING_RABBITMQ_HOST
               value: "rabbitmq"
